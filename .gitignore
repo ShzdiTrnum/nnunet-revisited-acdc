@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+# data and model outputs never go into the repo
+downloads/
+nnUNet_raw/
+nnUNet_preprocessed/
+nnUNet_results/
+*.nii.gz
+*.pth
+logs/
+env.sh
+results/per_case_metrics.csv

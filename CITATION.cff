@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+message: "If you use these scripts, please cite this repository and the original paper."
+title: "nnU-Net Revisited on ACDC: an independent reproduction"
+authors:
+  - family-names: Shahzadi
+    given-names: Turrnum
+repository-code: "https://github.com/ShzdiTrnum/nnunet-revisited-acdc"
+license: MIT
+preferred-citation:
+  type: conference-paper
+  title: "nnU-Net Revisited: A Call for Rigorous Validation in 3D Medical Image Segmentation"
+  authors:
+    - family-names: Isensee
+      given-names: Fabian
+    - family-names: Wald
+      given-names: Tassilo
+    - family-names: Ulrich
+      given-names: Constantin
+    - family-names: Baumgartner
+      given-names: Michael
+    - family-names: Roy
+      given-names: Saikat
+    - family-names: Maier-Hein
+      given-names: Klaus
+    - family-names: Jäger
+      given-names: Paul F.
+  collection-title: "Medical Image Computing and Computer Assisted Intervention (MICCAI)"
+  year: 2024
