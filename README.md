@@ -5,8 +5,7 @@ for three of the paper's configurations: the original nnU-Net, nnU-Net ResEnc M 
 Training and evaluation ran on 2× NVIDIA RTX 6000 Ada (48 GB) and follow the paper's protocol:
 5-fold cross-validation on the ACDC training set, using nnU-Net's own patient-level splits.
 
-> **Status (October 2026): complete.** All 15 trainings (3 models × 5 folds) finished. All three
-> models reproduce the paper's ACDC Dice within **0.03 points** (at most 0.06 of a fold standard
+>  All three models reproduce the paper's ACDC Dice within **0.03 points** (at most 0.06 of a fold standard
 > deviation) and its NSD within **0.08 points**.
 
 ## Paper
