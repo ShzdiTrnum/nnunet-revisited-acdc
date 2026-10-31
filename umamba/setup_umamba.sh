@@ -35,6 +35,8 @@ wget -c -nv --show-progress -P "$R/wheels" "https://github.com/state-spaces/mamb
 if python -c "import mamba_ssm, causal_conv1d" 2>/dev/null; then echo "[skip] mamba_ssm + causal_conv1d installed"
 else pip install "$R/wheels/$W2" "$R/wheels/$W1"; fi
 
+pip install -q "transformers==4.46.3"   # mamba_ssm 2.2.4 imports GreedySearchDecoderOnlyOutput, removed in transformers 5.0
+
 # 3. U-Mamba code (bundles nnU-Net 2.1.1), pinned; make paths.py read the environment variables -------
 if [ ! -d "$R/U-Mamba/.git" ]; then git clone https://github.com/bowang-lab/U-Mamba.git "$R/U-Mamba"; fi
 git -C "$R/U-Mamba" checkout -q "$UMAMBA_COMMIT"
