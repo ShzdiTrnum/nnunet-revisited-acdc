@@ -30,8 +30,10 @@ ABI=$(python -c "import torch;print('TRUE' if torch._C._GLIBCXX_USE_CXX11_ABI el
 # 2. prebuilt Mamba CUDA kernels (no compiler needed), resumable download ---------------------------
 TAG="cu12torch2.5cxx11abi${ABI}-cp310-cp310-linux_x86_64.whl"
 W1="mamba_ssm-${MAMBA_V}+${TAG}"; W2="causal_conv1d-${CCONV_V}+${TAG}"
-wget -c -nv --show-progress -P "$R/wheels" "https://github.com/Dao-AILab/causal-conv1d/releases/download/v${CCONV_V}/${W2}"
-wget -c -nv --show-progress -P "$R/wheels" "https://github.com/state-spaces/mamba/releases/download/v${MAMBA_V}/${W1}"
+# GitHub redirects to signed links that expire after minutes: retry from the GitHub URL each time (-c resumes)
+get() { for i in $(seq 1 100); do wget -c -nv --show-progress --tries=1 --timeout=60 -P "$R/wheels" "$1" && return 0; echo "retry $i with a fresh link..."; sleep 15; done; return 1; }
+get "https://github.com/Dao-AILab/causal-conv1d/releases/download/v${CCONV_V}/${W2}"
+get "https://github.com/state-spaces/mamba/releases/download/v${MAMBA_V}/${W1}"
 if python -c "import mamba_ssm, causal_conv1d" 2>/dev/null; then echo "[skip] mamba_ssm + causal_conv1d installed"
 else pip install "$R/wheels/$W2" "$R/wheels/$W1"; fi
 
